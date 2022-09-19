@@ -15,7 +15,7 @@ const initdb = async () =>
 // TODO: Add logic to a method that accepts some content and adds it to the database
 // modeled from post method in module miniproject
 export const putDb = async (content) => {
-  console.error('putDb not implemented');
+
   // Create a connection to the database database and version we want to use.
   const jateDb = await openDB('jate', 1);
 
@@ -36,7 +36,6 @@ export const putDb = async (content) => {
 // TODO: Add logic for a method that gets all the content from the database - from module miniproject
 // replaced contact with Jate
 export const getDb = async () => {
-  console.error('getDb not implemented');
   // Create a connection to the database database and version we want to use.
   const jateDb = await openDB('jate', 1);
 
@@ -47,12 +46,12 @@ export const getDb = async () => {
   const store = tx.objectStore('jate');
 
   // Use the .getAll() method to get all data in the database.
-  const request = store.getAll();
+  const request = store.get(1);
 
   // Get confirmation of the request.
   const result = await request;
-  console.log('result.value', result);
-  return result;
+  console.log('result.value', result.value);
+  return result.value;
 }
 
 
